@@ -12,21 +12,21 @@ import java.util.*;
 public class EmployeeServiceImlp implements EmployeeService {
 
     private static final int CONSTANT = 10;
-    private final Map<String, Employee> employees;
+    private final Map<String, Employee> employees = new HashMap<>();
 
-    public EmployeeServiceImlp() {
-        this.employees = new HashMap<>();
-        addEmployee("Pety", "Petrov");
-        addEmployee("Vasya", "Vasichkin");
-        addEmployee("Misha", "Mishichkik");
-        addEmployee("Masha", "Mishina");
-        addEmployee("Vera", "Verina");
-        addEmployee("Dasha", "Dashina");
-
-    }
+//    public EmployeeServiceImlp() {
+//        this.employees = new HashMap<>();
+//        addEmployee("Pety", "Petrov");
+//        addEmployee("Vasya", "Vasichkin");
+//        addEmployee("Misha", "Mishichkik");
+//        addEmployee("Masha", "Mishina");
+//        addEmployee("Vera", "Verina");
+//        addEmployee("Dasha", "Dashina");
+//
+//    }
 
     @Override
-    public Employee addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName, double salary, int department) {
 
         if (employees.size() >= CONSTANT) {
             throw new EmployeeStorageIsFullException("Превышен лемит сотрудников");
@@ -37,7 +37,7 @@ public class EmployeeServiceImlp implements EmployeeService {
             throw new EmployeeAlreadyAddedException("Такой сотрудник уже есть");
         }
 
-        Employee empl = new Employee(firstName, lastName);
+        Employee empl = new Employee(firstName, lastName, salary, department);
 
         employees.put(key, empl);
 

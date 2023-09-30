@@ -6,24 +6,25 @@ import java.util.Random;
 public class Employee {
     private final String firstName;
     private final String lastName;
+    private final double salary;
     private final int department;
-    private final int salary;
 
-    public Employee(String firstName, String lastName) {
-        Random random = new Random();
+
+    public Employee(String firstName, String lastName, double salary, int department) {
+
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = random.nextInt(10000) + 1000;
-        this.department = random.nextInt(2) + 1;
+        this.salary = salary;
+        this.department = department;
     }
 
-    public Employee(String firstName, String lastName, Integer department) {
-        Random random = new Random();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.salary = random.nextInt(10000) + 1000;
-        this.department = random.nextInt(2) + 1;
-    }
+//    public Employee(String firstName, String lastName, Integer department) {
+//        Random random = new Random();
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.salary = random.nextInt(10000) + 1000;
+//        this.department = random.nextInt(2) + 1;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -37,7 +38,7 @@ public class Employee {
         return department;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
 

@@ -19,29 +19,29 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Employee getEmployeeWithMaxSalary(Integer departmentId) {
+    public Employee getEmployeeWithMaxSalary(Integer department) {
 
         return employeeService.getEmployeesAll()
                 .stream()
-                .filter(e -> e.getDepartment() == departmentId)
-                .max(Comparator.comparingInt(Employee::getSalary))
+                .filter(e -> e.getDepartment() == department)
+                .max(Comparator.comparingDouble(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Такого сотрудника нет"));
     }
 
     @Override
-    public Employee getEmployeeWithMinSalary(Integer departmentId) {
+    public Employee getEmployeeWithMinSalary(Integer department) {
         return employeeService.getEmployeesAll()
                 .stream()
-                .filter(e -> e.getDepartment() == departmentId)
-                .min(Comparator.comparingInt(Employee::getSalary))
+                .filter(e -> e.getDepartment() == department)
+                .min(Comparator.comparingDouble(Employee::getSalary))
                 .orElseThrow(() -> new EmployeeNotFoundException("Такого сотрудника нет"));
     }
 
     @Override
-    public Collection<Employee> getEmployees(Integer departmentId) {
+    public Collection<Employee> getEmployees(Integer department) {
         return employeeService.getEmployeesAll()
                 .stream()
-                .filter(e -> e.getDepartment() == departmentId)
+                .filter(e -> e.getDepartment() == department)
                 .collect(Collectors.toList());
     }
 
